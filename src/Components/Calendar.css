@@ -1,0 +1,22 @@
+.calendar-wrapper {
+  background-color: #f3f3f3;
+  padding: 10px;
+  height: 80%;
+  width: 80%;
+  border-radius: 10px;
+  /* width: 60%; */
+
+}
+
+.month-block {
+  font-size: 50px;
+  padding: 40px 10px;
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+

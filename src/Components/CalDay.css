@@ -1,0 +1,40 @@
+.day-box {
+  display: flex;
+  flex-direction: column;
+  /* width: 100/7; This is 100/7 */
+  height: 20%;
+  /* min-width: 14%;
+  min-height: 20%; */
+  /* border: 1px solid black; */
+  background-color: white;
+  margin: 1px;
+  min-height: 100px;
+  width: 14.285%
+}
+
+.appointments-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.appointment-pill {
+  text-align: center;
+  font-size: 8px;
+  background-color: plum;
+  border-radius: 20px;
+  margin: 1px;
+  padding: 3px;
+}
+
+.appointment-pill:hover, .day-box:hover {
+  cursor: pointer;
+}
+
+.day-num p {
+  margin: 5px;
+}
+
+.day-content-wrapper {
+  margin: 5px;
+}
+
