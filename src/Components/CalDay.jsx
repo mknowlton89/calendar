@@ -5,7 +5,7 @@ import './CalDay.css'
 //   dayNum: String,
 // }
 
-export const CalDay = ({ dayNum }) => {
+export const CalDay = ({ index, dayNum }) => {
 
   function handleDayBoxClick() {
     alert('Day Box clicked')
@@ -17,7 +17,7 @@ export const CalDay = ({ dayNum }) => {
   }
 
   return (
-    <div className='day-box' onClick={() => handleDayBoxClick()}>
+    <div className={`grid-item grid-item-${index}`} onClick={() => handleDayBoxClick()}>
       <div className='day-content-wrapper'>
         <div className='day-num'>
           <p>{dayNum}</p>

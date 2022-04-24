@@ -1,11 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import Calendar from './Components/Calendar';
+import CalendarDynamic from './Components/CalendarDynamic';
+
 
 function App() {
   return (
     <div className='app-wrapper'>
-      <Calendar />
+      <CalendarDynamic />
     </div>
   );
 }

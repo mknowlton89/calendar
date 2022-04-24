@@ -1,22 +1,100 @@
 .calendar-wrapper {
-  background-color: #f3f3f3;
-  padding: 10px;
+  /* background-color: #f3f3f3; */
+  /* padding: 10px; */
   height: 80%;
   width: 80%;
   border-radius: 10px;
   /* width: 60%; */
-
 }
 
-.month-block {
+/* .month-block {
   font-size: 50px;
   padding: 40px 10px;
   text-align: center;
-}
+} */
 
-.row {
+/* .row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+} */
+
+/* .legend {
+  text-align: center;
 }
+
+.legend p {
+  width: 14.285%;
+} */
+
+.calendar-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  /* height: 90vh; */
+  width: 90vh;
+  background-color: #e6e5e5;
+  padding: 10px;
+}
+
+.month-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 30px;
+  height: 10%;
+}
+
+.legend {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+}
+
+.legend p {
+  width: 100%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(7, auto);
+  column-gap: 5px;
+  row-gap: 5px;
+}
+
+.grid-item {
+  background-color: white;
+  /* width: 50px; */
+  height: 100px;
+  border-radius: 5px;
+}
+
+.month-nav-btn {
+  background-color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.month-nav-btn:hover {
+  cursor: pointer;
+}
+
+/* .grid-item-1 {
+  background-color: lightblue;
+  height: 10%;
+}
+
+.grid-item-2 {
+  background-color: lightcoral;
+}
+
+.grid-item-3 {
+  background-color: lightyellow
+} */
 
