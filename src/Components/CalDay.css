@@ -27,11 +27,21 @@
   cursor: pointer;
 }
 
+.day-num {
+  width: fit-content;
+  padding: 2px;
+  border-radius: 50px;
+}
+
 .day-num p {
   margin: 5px;
 }
 
 .day-content-wrapper {
   margin: 5px;
+}
+
+.currentDay {
+  background-color: #fcb3b3;;
 }
 
