@@ -5,10 +5,11 @@ import './CalDay.css'
 //   dayNum: String,
 // }
 
-export const CalDay = ({ index, dayNum }) => {
+export const CalDay = ({ index, date }) => {
 
   function handleDayBoxClick() {
     alert('Day Box clicked')
+    console.log(date)
   }
 
   function handleAppointmentPillClick (e) {
@@ -20,7 +21,7 @@ export const CalDay = ({ index, dayNum }) => {
     <div className={`grid-item grid-item-${index}`} onClick={() => handleDayBoxClick()}>
       <div className='day-content-wrapper'>
         <div className='day-num'>
-          <p>{dayNum}</p>
+          <p>{date.getDate()}</p>
         </div>
         <div className='appointments-wrapper'>
           <span className='appointment-pill' onClick={(e) => handleAppointmentPillClick(e)}>10:00AM - 11:15AM</span>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './Calendar.css';
 import { CalDay } from './CalDay';
 
@@ -12,11 +12,7 @@ const Calendar = () => {
 
   // Get the current month - in order to get the number of days in this month
   let currentMonth = currentDate.getMonth();
-  console.log(currentMonth);
   let currentYear = currentDate.getFullYear();
-  let daysInCurrentMonth = new Date(currentYear, (currentMonth + 1), 0).getDate(); // TODO: This is currently showing 31 for April 2022, when it should be 30.
-  console.log(daysInCurrentMonth);
-
   let previousMonth;
 
   if (currentMonth === 0) {
@@ -33,30 +29,31 @@ const Calendar = () => {
     daysInPreviousMonth = new Date(currentYear, previousMonth + 1, 0).getDate();
   }
 
-  console.log(daysInPreviousMonth);
-
   // Get the day of the week of the first day of currentMonth
   const firstDayOfCurrentMonth = new Date(`${monthToDisplay} 1, ${currentYear} 00:00:00`);
-  const day1 = firstDayOfCurrentMonth.getDay();
-  // Sunday - Saturday : 0 - 6
+  const day1 = firstDayOfCurrentMonth.getDay() - 1;
 
 
   let days = [];
 
     for (let i = (-1 * day1); i < (35 - day1); i++) {
       if (i < 0) {
-        // Get the prev month
         let prevMonthDayNum = daysInPreviousMonth + i;
-        let prevMonthDate = currentDate - i;
-        let prevMonthDateString = new Date(prevMonthDate);
-        console.log(prevMonthDateString);
-        days.push(prevMonthDayNum)
+        let date = new Date(currentYear, previousMonth, prevMonthDayNum);
+        days.push(
+          {
+            i: prevMonthDayNum,
+            date: date,
+          })
       } else {
-        days.push(i)
+        let date = new Date(currentYear, currentMonth, i);
+        days.push(
+          {
+            i: i,
+            date: date,
+          })
       }
     }
-
-  console.log(days);
 
   function goToPrevMonth() {
     alert('Not hooked up yet');
@@ -84,8 +81,8 @@ const Calendar = () => {
         <p>Saturday</p>
       </div>
       <div className='grid-container'>
-      {days.map((i, index) => (
-        <CalDay index={i} dayNum={i + 1} key={index}/>
+      {days.map(({i, date, index}) => (
+        <CalDay index={i} key={index} date={date}/>
     ))}
       </div>
     </div>
