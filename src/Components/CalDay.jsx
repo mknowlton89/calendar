@@ -1,12 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './CalDay.css'
 
-// type Props = {
-//   dayNum: String,
-// }
-
-export const CalDay = ({ date, index }) => {
+export const CalDay = ({ date, appointments }) => {
   let today = new Date()
+
+  console.log(appointments);
+
   let currentDay = false;
   if (today.toDateString() === date.toDateString()) {
     currentDay = true;
@@ -29,8 +28,17 @@ export const CalDay = ({ date, index }) => {
           <p>{date.getDate()}</p>
         </div>
         <div className='appointments-wrapper'>
-          {/* <span className='appointment-pill' onClick={(e) => handleAppointmentPillClick(e)}>10:00AM - 11:15AM</span>
-          <span className='appointment-pill' onClick={(e) => handleAppointmentPillClick(e)}>12:00PM - 1:15PM</span> */}
+        {/* { appointments && appointments.map((appointment) => {
+          <span className='appointment-pill' onClick={(e) => handleAppointmentPillClick(e)}>{`${appointment.title}`}</span>
+        })} */}
+        {
+          appointments && (
+            appointments.map(appointment => (
+              <span className='appointment-pill' key={appointment.id} onClick={(e) => handleAppointmentPillClick(e)}>{`${appointment.title}`}</span>
+            ))
+          )
+        }
+          {/* <span className='appointment-pill' onClick={(e) => handleAppointmentPillClick(e)}>10:00AM - 11:15AM</span> */}
         </div>
       </div>
     </div>

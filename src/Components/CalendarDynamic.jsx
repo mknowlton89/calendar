@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import './Calendar.css';
 import { CalDay } from './CalDay';
+import { useAppointmentData } from '../Hooks/useAppointmentData';
 
 const Calendar = () => {
+  let { appointmentData } = useAppointmentData();
   let [ currentDate, setCurrentDate ] = useState(new Date());
   const monthOptions = { month: 'long'};
   let daysInPreviousMonth;
   let previousMonth;
   let daysArray = [];
 
-  // let currentDate = new Date();
   let currentMonth = currentDate.getMonth();
   let currentYear = currentDate.getFullYear();
   let monthToDisplay = new Intl.DateTimeFormat('en-US', monthOptions).format(currentDate);
@@ -31,20 +32,29 @@ const Calendar = () => {
 
   // Create the daysArray
     for (let i = (-1 * dayOfFirstDayOfMonth); i < (35 - dayOfFirstDayOfMonth); i++) {
+      let date;
+
       if (i < 0) {
         let prevMonthDayNum = daysInPreviousMonth + i;
-        let date = new Date(currentYear, previousMonth, prevMonthDayNum);
+        date = new Date(currentYear, previousMonth, prevMonthDayNum);
+        // Get all of the appointments for this day
+        const appointments = appointmentData.filter(appointment => new Date(appointment.startTime).toDateString() === date.toDateString());
         daysArray.push(
           {
             date: date,
+            appointments: appointments,
           })
       } else {
-        let date = new Date(currentYear, currentMonth, i);
+        date = new Date(currentYear, currentMonth, i);
+        // Get all of the appointments for this day
+        const appointments = appointmentData.filter(appointment => new Date(appointment.startTime).toDateString() === date.toDateString());
         daysArray.push(
           {
             date: date,
+            appointments: appointments,
           })
       }
+
     }
 
   function goToPrevMonth() {
@@ -60,7 +70,6 @@ const Calendar = () => {
     let nextMonth = currentMonth + 1
     setCurrentDate(new Date(currentYear, nextMonth, 1));
   }
-
 
   return (
     <div className='calendar-wrapper'>
@@ -79,8 +88,8 @@ const Calendar = () => {
         <p>Saturday</p>
       </div>
       <div className='grid-container'>
-      {daysArray.map(({date}) => (
-        <CalDay key={date} date={date}/>
+      {daysArray.map(({date, appointments}) => (
+        <CalDay key={date} date={date} appointments={appointments} />
     ))}
       </div>
     </div>
